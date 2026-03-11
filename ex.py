@@ -1,4 +1,12 @@
-
+"""
+insert_beginning(value) — inserir elemento no início da lista - OK
+insert_end(value) — inserir elemento no final da lista - OK
+remove(value) — remover um elemento da lista
+search(value) — buscar um elemento na lista - OK
+print_list() — imprimir os elementos da lista
+size() — retornar o tamanho da lista - OK
+is_empty() — verificar se a lista está vazia 
+"""
 
 class Node:
     def __init__(self, value) -> None:
@@ -8,7 +16,13 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-        self.size = 0
+        self._size = 0
+        
+    def insert_beginning(self, value):
+        node = Node(value)
+        node.next = self.head
+        self.head = node
+        self.size += 1
         
     def insert_end(self, value):
         if self.head:
@@ -28,13 +42,16 @@ class LinkedList:
         pointer = self.head
         i = 0
         while (pointer):
-            if pointer.data == value:
+            if pointer.value == value:
                 return i
             pointer = pointer.next
             i = i + 1
         return None
     # ou raise ValueError ("O elemento não está na lista")
 
+    def size(self):
+        return self.size
 lista = LinkedList()
 lista.insert_end(7)
 len(lista)
+
