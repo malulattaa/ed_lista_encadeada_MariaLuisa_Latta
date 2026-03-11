@@ -3,7 +3,7 @@ insert_beginning(value) — inserir elemento no início da lista - OK
 insert_end(value) — inserir elemento no final da lista - OK
 remove(value) — remover um elemento da lista
 search(value) — buscar um elemento na lista - OK
-print_list() — imprimir os elementos da lista
+print_list() — imprimir os elementos da lista - OK
 size() — retornar o tamanho da lista - OK
 is_empty() — verificar se a lista está vazia - OK
 """
@@ -22,7 +22,7 @@ class LinkedList:
         node = Node(value)
         node.next = self.head
         self.head = node
-        self.size += 1
+        self._size += 1
         
     def insert_end(self, value):
         if self.is_empty():
@@ -32,12 +32,12 @@ class LinkedList:
             while(pointer.next):
                 pointer = pointer.next
             pointer.next = Node(value)
-        self.size += 1
+        self._size += 1
         
     # def remove(self, value):
         
     def is_empty(self):
-        return self.size == 0
+        return self._size == 0
 
     def search(self, value):
         pointer = self.head
@@ -51,7 +51,7 @@ class LinkedList:
     # ou raise ValueError ("O elemento não está na lista")
 
     def size(self):
-        return self.size
+        return self._size
     
     def print_list(self):
         pointer = self.head
@@ -60,8 +60,25 @@ class LinkedList:
             print(pointer.value, end = " -> ")
             pointer = pointer.next
         print("None")
+        
+    def remove():
+        
             
 lista = LinkedList()
-lista.insert_end(7)
-lista.size
 
+print("A lista está vazia?")
+print(lista.is_empty())
+print("")
+
+lista.insert_end(7)
+lista.insert_end(10)
+lista.insert_end(15)
+
+lista.insert_beginning(3)
+
+lista.print_list()
+
+print("Tamanho:", lista.size())
+
+print("Posição do 10:", lista.search(10))
+print("Posição do 100:", lista.search(100))
