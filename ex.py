@@ -67,18 +67,21 @@ class LinkedList:
         elif self.head.value == value:
             self.head = self.head.next
             self._size -= 1
+            return True
         else:
             aux = self.head
             pointer = self.head.next
+            
             while(pointer):
                 if pointer.value == value:
                     aux.next = pointer.next
                     pointer.next = None
-                else:
-                    aux = pointer
-                    pointer = pointer.next
-            return True
-        raise ValueError("Valor não encontrado")
+                    self._size -= 1
+                    return True
+                
+                aux = pointer
+                pointer = pointer.next
+            raise ValueError("Valor não encontrado")
             
 lista = LinkedList()
 
@@ -93,7 +96,8 @@ lista.insert_end(15)
 lista.insert_beginning(3)
 
 lista.print_list()
-
+lista.remove(10)
+lista.print_list()
 print("Tamanho:", lista.size())
 
 print("Posição do 10:", lista.search(10))
